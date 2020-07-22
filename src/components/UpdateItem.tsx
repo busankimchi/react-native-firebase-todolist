@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {TextInput, Button} from 'react-native-paper';
-import firestore from '@react-native-firebase/firestore';
-import {Navigation, url} from '../misc';
+import {Navigation} from '../misc';
 import {getItemById, updateItemById, deleteItemById} from '../database/api';
 
 function UpdateItem(props: Navigation) {
@@ -27,9 +26,12 @@ function UpdateItem(props: Navigation) {
         // load data after mount
         getItemById(item.id).then((docSnapshot) => {
             if (docSnapshot) {
-                let doc = docSnapshot.data();
-                console.log(doc);
-                //setText(doc);
+                const doc = docSnapshot.data();
+                const it: string = Object.values(doc as object)[0];
+
+                //console.log(Object.values(doc as object));
+                //console.log(doc);
+                setText(it);
             } else {
                 console.log('No such document!');
             }
@@ -38,9 +40,19 @@ function UpdateItem(props: Navigation) {
 
     return (
         <View>
-            <TextInput label={'Update Todo'} value={text} onChangeText={setText} />
-            <Button onPress={() => updateTodo()}>UPDATE TODO</Button>
-            <Button onPress={() => deleteTodo()}>DELETE TODO</Button>
+            <TextInput
+                focusable
+                mode="outlined"
+                label="Update Todo"
+                value={text}
+                onChangeText={setText}
+            />
+            <Button focusable onPress={() => updateTodo()}>
+                UPDATE TODO
+            </Button>
+            <Button focusable onPress={() => deleteTodo()}>
+                DELETE TODO
+            </Button>
         </View>
     );
 }

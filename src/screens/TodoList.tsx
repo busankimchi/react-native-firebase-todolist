@@ -54,11 +54,37 @@ class TodoList extends React.Component<Navigation, State> {
             });
     }
 
+    selectDate = (timestamp: Date) => {
+        let d = new Date(timestamp),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = '' + d.getFullYear();
+
+        if (month.length < 2) {
+            month = '0' + month;
+        }
+
+        if (day.length < 2) {
+            day = '0' + day;
+        }
+
+        let date = [year, month, day].join('-');
+        console.log(date);
+
+        this.setState({date: date});
+    };
+
     render() {
         const {loading, todos, date} = this.state;
 
         if (loading) {
-            return <ActivityIndicator animating={true} color={Colors.red800} />;
+            return (
+                <ActivityIndicator
+                    focusable
+                    animating={true}
+                    color={Colors.red800}
+                />
+            );
         }
 
         return (
@@ -71,9 +97,7 @@ class TodoList extends React.Component<Navigation, State> {
                     dateNumberStyle={styles.dateNumberStyle}
                     dateNameStyle={styles.dateNameStyle}
                     iconContainer={styles.iconContainer}
-                    onDateSelected={(timestamp: Date) =>
-                        this.setState({date: timestamp.toDateString()})
-                    }
+                    onDateSelected={(d: Date) => this.selectDate(d)}
                 />
                 <FlatList
                     style={styles.flatListStyle}
@@ -85,6 +109,7 @@ class TodoList extends React.Component<Navigation, State> {
                 />
                 <FAB
                     small
+                    focusable
                     icon="plus"
                     onPress={() =>
                         this.props.navigation.navigate('AddItem', {

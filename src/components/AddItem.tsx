@@ -19,15 +19,22 @@ function AddItem(props: Navigation) {
             body: JSON.stringify(data),
         }).then((res) => {
             console.log(res.json());
-            setText('');
             props.navigation.navigate('TodoList');
         });
     }
 
     return (
         <View>
-            <TextInput label={'New Todo'} value={text} onChangeText={setText} />
-            <Button onPress={() => addTodo()}>ADD TODO</Button>
+            <TextInput
+                focusable
+                mode="outlined"
+                label="New Todo"
+                value={text}
+                onChangeText={setText}
+            />
+            <Button focusable onPress={() => addTodo()}>
+                ADD TODO
+            </Button>
         </View>
     );
 }

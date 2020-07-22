@@ -1,1 +1,1 @@
-export const url = 'http://34.85.25.169/api/todo/';
+export const url = 'http://35.213.58.175/api/todo/';
