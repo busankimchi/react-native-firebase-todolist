@@ -1,0 +1,49 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-firebase/app": "^8.2.0",
+    "@react-native-firebase/firestore": "^7.4.3",
+    "@react-navigation/native": "^5.7.1",
+    "@react-navigation/stack": "^5.7.1",
+    "firebase-admin": "^9.0.0",
+    "react": "16.11.0",
+    "react-native": "0.62.2",
+    "react-native-calendar-strip": "^2.0.8",
+    "react-native-calendar-strip-slide-navigation": "0.0.3",
+    "react-native-elements": "^2.0.4",
+    "react-native-gesture-handler": "^1.6.1",
+    "react-native-paper": "^4.0.1",
+    "react-native-reanimated": "^1.9.0",
+    "react-native-safe-area-context": "^3.1.1",
+    "react-native-screens": "^2.9.0",
+    "react-native-vector-icons": "^7.0.0",
+    "react-navigation": "^4.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/runtime": "^7.10.4",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@types/react": "^16.9.35",
+    "@types/react-native": "^0.62.10",
+    "babel-jest": "^26.0.1",
+    "eslint": "^7.0.0",
+    "jest": "^26.0.1",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-typescript-transformer": "^1.2.13",
+    "react-test-renderer": "16.11.0",
+    "typescript": "^3.9.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
