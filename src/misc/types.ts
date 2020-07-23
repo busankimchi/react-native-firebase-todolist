@@ -3,6 +3,7 @@ export interface Navigation {
         navigate: (route: string, params?: any) => void;
         push: (route: string) => void;
         goBack: () => void;
+        addListener: (focus: string, callback: () => void) => void;
     };
     route: {
         params: any;
@@ -11,7 +12,7 @@ export interface Navigation {
 
 export type Item = {
     id: string;
-    title: string;
+    text: string;
     date: string;
+    time: string;
 };
-

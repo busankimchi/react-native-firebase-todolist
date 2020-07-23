@@ -7,17 +7,9 @@ import {Navigation, Item} from '../misc';
 import {getListAll} from '../database/api';
 import {useIsFocused} from '@react-navigation/native';
 
-type State = {
-    loading: boolean;
-    todos: Item[];
-    date: string;
-};
-
 function TodoList(props: Navigation) {
     const [loading, setLoading] = useState(true);
-    const [todos, setTodos] = useState([
-        {id: '', text: '', date: '', time: ''},
-    ]);
+    const [todos, setTodos] = useState<Item[]>([]);
     const [date, setDate] = useState(selectDate(new Date()));
     const isFocused = useIsFocused();
 

@@ -5,11 +5,14 @@ import {Navigation, url} from '../misc';
 
 function AddItem(props: Navigation) {
     const [text, setText] = useState('');
-    const {date} = props.route.params;
+    const [time, setTime] = useState('');
+    const {date, id} = props.route.params;
 
     function addTodo() {
         // post request to back-end
-        const data = {text: text, date: date};
+        const data = {text: text, date: date, time: time};
+
+        console.log(data);
 
         fetch(url, {
             method: 'POST',
@@ -18,8 +21,8 @@ function AddItem(props: Navigation) {
             },
             body: JSON.stringify(data),
         }).then((res) => {
-            console.log(res.json());
-            props.navigation.navigate('TodoList');
+            console.log(res);
+            props.navigation.goBack();
         });
     }
 
@@ -28,9 +31,16 @@ function AddItem(props: Navigation) {
             <TextInput
                 focusable
                 mode="outlined"
-                label="New Todo"
+                label="New Todo Text"
                 value={text}
                 onChangeText={setText}
+            />
+            <TextInput
+                focusable
+                mode="outlined"
+                label="New Todo Time"
+                value={time}
+                onChangeText={setTime}
             />
             <Button focusable onPress={() => addTodo()}>
                 ADD TODO

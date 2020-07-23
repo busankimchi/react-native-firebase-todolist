@@ -9,7 +9,7 @@ function TodoItem(props: {item: Item; nav: Navigation}) {
         });
     }
 
-    return <List.Item title={props.item.title} onPress={() => toggleItem()} />;
+    return <List.Item title={props.item.text} onPress={() => toggleItem()} />;
 }
 
 export default React.memo(TodoItem);
