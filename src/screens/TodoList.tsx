@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, View, StyleSheet} from 'react-native';
+import {FlatList, View, StyleSheet, DatePickerIOS} from 'react-native';
 import {FAB, ActivityIndicator, Colors} from 'react-native-paper';
 import CalendarStrip from 'react-native-calendar-strip';
 import {TodoItem} from '../components';
@@ -16,7 +16,7 @@ function TodoList(props: Navigation) {
     useEffect(() => {
         getListAll(date)
             .then((querySnapshot) => {
-                console.log('date: ' + date);
+                console.log('after set date: ' + date);
 
                 let list: Item[] = [];
                 if (querySnapshot) {
@@ -28,12 +28,13 @@ function TodoList(props: Navigation) {
                             text: docs.text,
                             date: date,
                             time: docs.time,
+                            org: docs.org,
+                            people: docs.people,
+                            place: docs.place,
                         });
                     });
 
-                    console.log(list);
                     setTodos(list);
-                    console.log(todos);
 
                     if (loading) {
                         setLoading(false);
@@ -89,18 +90,19 @@ function TodoList(props: Navigation) {
                 onDateSelected={(d: Date) => {
                     let dat = selectDate(d);
                     setDate(dat);
+                    console.log('hi im setting date to ' + dat);
                 }}
             />
             <FlatList
-                style={styles.flatListStyle}
                 data={todos}
+                scrollEnabled
                 keyExtractor={(item: Item) => item.id}
                 renderItem={({item}) => (
                     <TodoItem item={item} nav={props as Navigation} />
                 )}
             />
             <FAB
-                small
+                style={styles.fab}
                 focusable
                 icon="plus"
                 onPress={() =>
@@ -125,10 +127,15 @@ const styles = StyleSheet.create({
     dateNumberStyle: {color: 'white'},
     dateNameStyle: {color: 'white'},
     iconContainer: {flex: 0.1},
-    flatListStyle: {flex: 1},
     Spinner: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    fab: {
+        position: 'absolute',
+        margin: 0,
+        right: 25,
+        top: 525,
     },
 });

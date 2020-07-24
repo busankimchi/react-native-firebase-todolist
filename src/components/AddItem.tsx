@@ -6,13 +6,13 @@ import {Navigation, url} from '../misc';
 function AddItem(props: Navigation) {
     const [text, setText] = useState('');
     const [time, setTime] = useState('');
-    const {date, id} = props.route.params;
+    const {date} = props.route.params;
 
+    console.log('add on:' + date);
+    
     function addTodo() {
         // post request to back-end
         const data = {text: text, date: date, time: time};
-
-        console.log(data);
 
         fetch(url, {
             method: 'POST',
@@ -22,7 +22,7 @@ function AddItem(props: Navigation) {
             body: JSON.stringify(data),
         }).then((res) => {
             console.log(res);
-            props.navigation.goBack();
+            props.navigation.navigate('TodoList');
         });
     }
 
