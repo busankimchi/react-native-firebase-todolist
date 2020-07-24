@@ -59,7 +59,7 @@ buck-out/
 /ios/Pods/
 
 # Google firestore
-*.plist
+GoogleService-Info.plist
 
 # etc
 __tests__/
