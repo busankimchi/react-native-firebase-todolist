@@ -15,4 +15,7 @@ export type Item = {
     text: string;
     date: string;
     time: string;
+    org: string;
+    people: string;
+    place: string;
 };
