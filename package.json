@@ -7,7 +7,9 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
@@ -28,7 +30,8 @@
     "react-native-safe-area-context": "^3.1.1",
     "react-native-screens": "^2.9.0",
     "react-native-vector-icons": "^7.0.0",
-    "react-navigation": "^4.4.0"
+    "react-navigation": "^4.4.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -46,5 +49,6 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "snyk": true
 }
