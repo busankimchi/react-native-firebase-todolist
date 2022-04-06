@@ -16,7 +16,7 @@
     "@react-navigation/native": "^5.7.1",
     "@react-navigation/stack": "^5.7.1",
     "firebase-admin": "^9.0.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-calendar-strip": "^2.0.8",
